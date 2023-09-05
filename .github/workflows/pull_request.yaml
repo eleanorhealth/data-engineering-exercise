@@ -1,0 +1,38 @@
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    if:
+      github.event_name == 'push' || github.event.pull_request.head.repo.full_name !=
+      github.repository
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Assert PR target is main
+        if: github.event_name == 'pull_request' && github.repository == 'eleanorhealth/data-eng-exercise'
+        run: |
+          if [ "$GITHUB_BASE_REF" != "main" ]; then
+              echo "::error::PR targeting '$GITHUB_BASE_REF', please refile targeting 'main'." && exit 1
+          fi
+
+      - name: Set up latest Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install pipenv
+          pipenv install --dev --deploy --ignore-pipfile
+
+      - name: Lint
+        run: |
+          pipenv run flake8 --benchmark
+          pipenv run black --check .
+          pipenv run isort --check-only --diff .
+          pipenv run mypy .
