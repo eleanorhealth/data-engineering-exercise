@@ -44,7 +44,7 @@ def main(input_file: str) -> None:
         logger.error(f"PermissionError: {e}")
         sys.exit(1)
 
-    logger.info("Output file: " + output_file)
+    logger.info(f"Output file: {output_file}")
     logger.info("Done!")
 
 
