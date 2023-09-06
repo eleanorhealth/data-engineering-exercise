@@ -82,16 +82,15 @@ and add the missing data to the record.
 
 Zippy is a test service that is designed to mimic the functionality of the zipcodebase api. It is a simple
 go app that will return a json response with the city and state for a given list of zipcodes. The service
-is available at the following url: [https://zippy.qa.eleanorhealth.io/](https://zippy.qa.eleanorhealth.io/)
-and the source code is available at the following repo: [Zippy Repo](https://github.com/eleanorhealth/zippy)
+is available to you and an endpoint will be provided during the exercise.
 
 ##### Example Request
 
 ```bash
-curl -X POST -H "Content-Type: application/json" https://zippy.qa.eleanorhealth.io/locations\?zipCodes\=28202,90210
+curl -X POST -H "Content-Type: application/json" https://{TEMP_ENDPOINT}/locations\?zipCodes\=28202,90210
 ```
 
-or in a web browser go to the following url: [https://zippy.qa.eleanorhealth.io/locations?zipCodes=28202,90210](https://zippy.qa.eleanorhealth.io/locations?zipCodes=28202,90210)
+or in a web browser go to the following url: [https://{TEMP_ENDPOINT}/locations?zipCodes=28202,90210](https://{TEMP_ENDPOINT}}/locations?zipCodes=28202,90210)
 
 ##### Example Response
 
@@ -113,11 +112,6 @@ or in a web browser go to the following url: [https://zippy.qa.eleanorhealth.io/
   }
 ]
 ```
-
-##### Zippy Links
-
-1. [https://zippy.qa.eleanorhealth.io/](https://zippy.qa.eleanorhealth.io/)
-2. [Zippy Repo](https://github.com/eleanorhealth/zippy)
 
 ## Contributing
 
