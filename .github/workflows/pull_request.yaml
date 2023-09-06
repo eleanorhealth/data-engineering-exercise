@@ -1,0 +1,31 @@
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    if:
+      github.event_name == 'push' || github.event.pull_request.head.repo.full_name !=
+      github.repository
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up latest Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install pipenv
+          pipenv install --dev --deploy --ignore-pipfile
+
+      - name: Lint
+        run: |
+          pipenv run flake8 --benchmark
+          pipenv run black --check .
+          pipenv run isort --check-only --diff .
+          pipenv run mypy .
