@@ -21,7 +21,6 @@ def main(input_file: str) -> None:
         "ATTRIBUTED_PCP_NPI",
         "ATTRIBUTED_PCP_VENDOR_NAME",
         "ATTRIBUTED_PCP_VENDOR_PHONE",
-        "MBR_INSUR_PLAN",
     ]
 
     try:
@@ -33,6 +32,9 @@ def main(input_file: str) -> None:
     try:
         for col in delete_cols:
             df = df.drop(columns=col)
+
+          col_to_move = df.pop("MBR_INSUR_PLAN")
+          df.insert(len(df.columns), "MBR_INSUR_PLAN", col_to_move)
     except KeyError as e:
         logger.warning(f"KeyError: Some columns failed to drop. Error: {e}")
         pass
@@ -46,6 +48,8 @@ def main(input_file: str) -> None:
 
     logger.info(f"Output file: {output_file}")
     logger.info("Done!")
+
+    return "Done!"
 
 
 if __name__ == "__main__":
