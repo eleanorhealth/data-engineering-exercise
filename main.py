@@ -16,7 +16,7 @@ logger.setLevel(logging.INFO)
 
 
 def main(input_file: str) -> None:
-    """ main function """
+    """main function"""
     delete_cols = [
         "MBR_SUD",
         "ATTRIBUTED_PCP",
