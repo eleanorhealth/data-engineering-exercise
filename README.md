@@ -6,10 +6,13 @@ Repo designed for interview purposes regarding the data engineering role at Elea
 
 ### Prerequisites
 
+:warning: **If you are doing a live coding interview and are using the code editor provided to you by the interviewer,
+you do not need to install anything. The code editor will have everything you need.**
+
 This repo requires the following to be installed on your machine:
 
 - [Docker](https://docs.docker.com/get-docker/) (Easiest way to get started)
-- [Python 3.11+](https://www.python.org/downloads/)
+- [Python 3.9+](https://www.python.org/downloads/)
 - [Pipenv](https://pipenv.pypa.io/en/latest/)
 
 ### Installation
@@ -45,7 +48,11 @@ This repo requires the following to be installed on your machine:
 
 ## Tasks
 
-Each task should be completed in the `main.py` file. The tasks are as follows:
+Each task should be completed in the `main.py` file. During the interview, you will be asked to walk through
+your solution and explain your thought process. You will also be allowed to use the internet to look up
+documentation and other resources. If you have any questions, please ask.
+
+The tasks are as follows:
 
 ### 1. Normalize the `GENDER` column
 
@@ -65,8 +72,10 @@ Normalize the `GENDER` column in the `memberlist.csv` file to be either `M`, `F`
 Log a warning on missing required columns for city and state.
 
 * If the `CITY` or `STATE` column is missing, log a warning with the following message:
-  * `Missing required column: CITY`
-  * `Missing required column: STATE`
+  * `Missing value in required column: CITY`
+  * `Missing value in required column: STATE`
+* Use the `logger` object to log the warning
+* The `logger` object is already configured for you
 * Continue processing the file
 
 ### 3. Add city and state to records missing them
@@ -81,16 +90,17 @@ and add the missing data to the record.
 #### Zippy Usage
 
 Zippy is a test service that is designed to mimic the functionality of the zipcodebase api. It is a simple
-go app that will return a json response with the city and state for a given list of zipcodes. The service
-is available to you and an endpoint will be provided during the exercise.
+go app that will return a json response with the city and state for a given list of zipcodes. 
+
+The service is available to you and you will be given the url and api key to use it.
 
 ##### Example Request
 
 ```bash
-curl -X POST -H "Content-Type: application/json" https://{TEMP_ENDPOINT}/locations\?zipCodes\=28202,90210
+curl -X POST -H "Content-Type: application/json"https://{ZIPPY_URL}/locations?tempKey={API_KEY}&zipCodes=28202,90210
 ```
 
-or in a web browser go to the following url: [https://{TEMP_ENDPOINT}/locations?zipCodes=28202,90210](https://{TEMP_ENDPOINT}}/locations?zipCodes=28202,90210)
+or in a web browser go to the following url: [https://{ZIPPY_URL}/locations?tempKey={API_KEY}&zipCodes=28202,90210](https://{ZIPPY_URL}/locations?tempKey={API_KEY}&zipCodes=28202,90210)
 
 ##### Example Response
 
