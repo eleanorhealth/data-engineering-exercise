@@ -23,7 +23,6 @@ def main(input_file: str) -> None:
         "ATTRIBUTED_PCP_NPI",
         "ATTRIBUTED_PCP_VENDOR_NAME",
         "ATTRIBUTED_PCP_VENDOR_PHONE",
-        "MBR_INSUR_PLAN",
     ]
 
     try:
@@ -35,8 +34,12 @@ def main(input_file: str) -> None:
     try:
         for col in delete_cols:
             dataframe = dataframe.drop(columns=col)
+
+          col_to_move = dataframe.pop("MBR_INSUR_PLAN")
+          dataframe.insert(len(dataframe.columns), "MBR_INSUR_PLAN", col_to_move)
     except KeyError as err_msg:
         logger.warning("KeyError: Some columns failed to drop. Error: %s", err_msg)
+        pass
 
     try:
         output_file = os.path.splitext(input_file)[0] + "_out.csv"
@@ -47,6 +50,8 @@ def main(input_file: str) -> None:
 
     logger.info("Output file: %s", output_file)
     logger.info("Done!")
+
+    return "Done!"
 
 
 if __name__ == "__main__":
