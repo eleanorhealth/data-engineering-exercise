@@ -50,7 +50,10 @@ This repo requires the following to be installed on your machine:
 
 Each task should be completed in the `main.py` file. During the interview, you will be asked to walk through
 your solution and explain your thought process. You will also be allowed to use the internet to look up
-documentation and other resources. If you have any questions, please ask.
+documentation and other resources. If you have any questions, please ask your interviewer, they are there
+to help you complete the tasks. This interview should be conducted as if it is a pair programming exercise.
+While the interviewer will not solve the problems for you, they can guide you towards a solution or coach you
+through a problem if you are stuck.
 
 The tasks are as follows:
 
