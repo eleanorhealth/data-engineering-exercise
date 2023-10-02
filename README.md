@@ -90,7 +90,7 @@ and add the missing data to the record.
 #### Zippy Usage
 
 Zippy is a test service that is designed to mimic the functionality of the zipcodebase api. It is a simple
-go app that will return a json response with the city and state for a given list of zipcodes. 
+rest endpoint that will return a json response with the city(s) and state(s) for a given list of zipcodes. 
 
 The service is available to you and you will be given the url and api key to use it.
 
